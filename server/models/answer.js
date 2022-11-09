@@ -46,7 +46,7 @@ const getAnswersByQuestionID = (questionID, page, count) => {
       )
     )
   ) AS allAnswers
-  FROM answers LEFT JOIN photos ON answers.id = photos.answer_id WHERE answers.question_id=1 GROUP BY answers.id  limit ${currCount} offset(${(currPage - 1) * currCount})`;
+  FROM answers WHERE answers.question_id=${questionID}  limit ${currCount} offset(${(currPage - 1) * currCount})`;
 
 
 
@@ -66,7 +66,7 @@ const getAnswersByQuestionID = (questionID, page, count) => {
   return pool.query(query)
     .then(data => {
       console.log('data was successully sent out from DB');
-      
+
       return data.rows[0]['allanswers'];
     })
     .catch(err => {
