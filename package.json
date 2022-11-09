@@ -1,15 +1,24 @@
 {
-  "name": "",
+  "name": "system design capstone",
   "version": "",
-  "description": "",
-  "author": "",
+  "description": "QandA",
+  "author": "Lei Liang",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "server": "nodemon --watch server ./server/index.js",
+    "sequelize": "nodemon --watch server ./server/db/index.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.3"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
