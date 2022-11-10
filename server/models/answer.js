@@ -67,7 +67,7 @@ const getAnswersByQuestionID = (questionID, page, count) => {
     .then(data => {
       console.log('data was successully sent out from DB');
 
-      return data.rows[0]['allanswers'];
+      return data.rows[0]['allanswers'];//all lowercase
     })
     .catch(err => {
       console.log('getAllQuestions Model failed to get data from DB ', err);
@@ -79,9 +79,9 @@ const getAnswersByQuestionID = (questionID, page, count) => {
 const createAnswer = (questionID, body, name, email, photos) => {
   const date = Date.parse(new Date());
   console.log('date after parsing', date);//1667654128000
-  console.log('body', body)
-  console.log('name', name)
-  console.log('email', email)
+  console.log('body', body);
+  console.log('name', name);
+  console.log('email', email);
   const query = 'INSERT INTO answers (question_id,body,date_written,answerer_name,answerer_email) VALUES ($1, $2, $3, $4, $5)';
   return pool.query(query, [questionID, body, date, name, email])
     .then((res) => {
