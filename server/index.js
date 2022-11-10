@@ -14,4 +14,5 @@ app.listen(process.env.PORT, () => {
 });
 
 app.get('/loaderio-d56c7c88c599a365803752216427e8b2', (req, res)=>
-  res.send('loaderio-d56c7c88c599a365803752216427e8b2'));
+  res.send('loaderio-d56c7c88c599a365803752216427e8b2')
+);
