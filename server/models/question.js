@@ -2,7 +2,7 @@ const pool = require('../db/connection.js');
 
 
 const getQuestionsByProductID = (productID, count, page) => {
-  // const query = 'SELECT * FROM questions WHERE product_id = $1';
+  // const query = 'SELECT * FROM questions WHERE product_id = $1';c
   const query = `SELECT json_build_object
   (
       'product_id', ${productID}::VARCHAR(255),
@@ -20,7 +20,7 @@ const getQuestionsByProductID = (productID, count, page) => {
         'answers',
           (SELECT json_object_agg
             (
-            answers.id,
+              answers.id,
               (SELECT json_build_object
                 (
                   'id', answers.id,
@@ -35,7 +35,7 @@ const getQuestionsByProductID = (productID, count, page) => {
             ) FROM answers WHERE answers.question_id = questions.id)
         )
       ) FROM questions WHERE product_id = ${productID} AND reported = false
-      LIMIT ${count} OFFSET(${(page - 1) * count})
+      LIMIT ${count} OFFSET(${(page * count) - count})
     )
   ) AS allQuestions`;
 
@@ -61,7 +61,7 @@ const createQuestion = ({ product_id, body, name, email }) => {
   // console.log('name: ', name);
   // console.log('email: ', email);
   const date = Date.parse(new Date());
-  console.log('date after parsing', date);//1667654128000
+ // console.log('date after parsing', date);//1667654128000
   const query = 'INSERT INTO questions (product_id,body,date_written,asker_name,asker_email) VALUES ($1, $2, $3, $4, $5)';
   return pool.query(query, [product_id, body, date, name, email])
     .then((res) => {
@@ -74,13 +74,14 @@ const createQuestion = ({ product_id, body, name, email }) => {
 };
 
 const updateQuestionHelpful = (questionID) => {
+ // console.log('questionID passed into updateQuestionHelpful: ', questionID);
   const query = 'UPDATE public.questions SET helpful = helpful+1 WHERE id = $1'; //this works!!! Tested with PgAdmin
   return pool.query(query, [Number(questionID)])
     .then((res) => {
       return res;
     })
     .catch(err => {
-      console.log('updateQuestionHelpful model failed to update DB', err);
+     // console.log('updateQuestionHelpful model failed to update DB', err);
       throw err;
     });
 };
@@ -92,7 +93,7 @@ const updateQuestionReport = (questionID) => {
       return res;
     })
     .catch(err=>{
-      console.log('updateQuestionReport model failed to update DB', err);
+     // console.log('updateQuestionReport model failed to update DB', err);
       throw err;
     });
 };
