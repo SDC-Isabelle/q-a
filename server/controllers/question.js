@@ -3,13 +3,13 @@ const { question } = require('../models/');
 
 const getQuestions = (req, res) => {
   // console.log('req.params inside getQuestions controller', req.params);//{}
-  console.log('req.query inside getQuestions controller', req.query);// { product_id: '1' }
+  //console.log('req.query inside getQuestions controller', req.query);// { product_id: '1' }
   const productID = req.query.product_id;
-  console.log('productID inside getQuestionsController', productID);
+  //console.log('productID inside getQuestionsController', productID);
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  console.log('count:', count);
-  console.log('page:', page);
+  // console.log('count:', count);
+  // console.log('page:', page);
   return question.getQuestionsByProductID(productID, count, page)
     .then((data)=>{
       res.send(data);
@@ -21,7 +21,7 @@ const getQuestions = (req, res) => {
 };
 
 const postQuestion = (req, res) => {
-  console.log('req.body inside postQuestion controller', req.body);
+  //console.log('req.body inside postQuestion controller', req.body);
   //req.body
   //   {
   //   body: 'will this make it to the api?',
@@ -46,13 +46,14 @@ const postQuestion = (req, res) => {
 //'/:question_id/helpful'
 //ex: localhost:3000/qa/questions/1/helpful
 const putHelpful = (req, res) => {
-  console.log('req.params in controller putHelpful: ', req.params);//{ question_id: '1' }
+  //console.log('req.params in controller putHelpful: ', req.params);//{ question_id: '1' }
   // res.send('RECEIVED');
   const questionID = req.params.question_id;
   return question.updateQuestionHelpful(questionID)
     .then(() => {
-      res.status(204);
-      res.send('UPDATED');//this is supposed to be NO CONTENT
+     // console.log('db successfully updated');
+      res.sendStatus(204);
+      //this is supposed to be NO CONTENT
     })
     .catch(err => {
       console.log('question putHelpful controller failed to get res from model: ', err);

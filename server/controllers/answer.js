@@ -2,15 +2,15 @@ const { answer } = require('../models/');
 
 const getAnswers = (req, res) => {
   const questionID = req.params.question_id;
-  console.log('req.params:', req.params);
-  console.log('questionID: ', questionID);
+ // console.log('req.params:', req.params);
+  //console.log('questionID: ', questionID);
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  console.log('count:', count);
-  console.log('page:', page);
+  //console.log('count:', count);
+  //console.log('page:', page);
   return answer.getAnswersByQuestionID(questionID, page, count)
     .then((result) => {
-      console.log('result', result);
+      //console.log('result', result);
       res.send(result);
     })
     .catch(err => {
@@ -21,13 +21,13 @@ const getAnswers = (req, res) => {
 
 const postAnswer = (req, res) => {
   const questionID = req.params.question_id;
-  console.log('req.body', req.body)
+ // console.log('req.body', req.body)
   const body = req.body.body;
   const name = req.body.name;
   const email = req.body.email;
   const photos = req.body.photos;
-  console.log('POST ANSWER req.params:', req.params);
-  console.log('questionID: ', questionID);
+ // console.log('POST ANSWER req.params:', req.params);
+ // console.log('questionID: ', questionID);
   return answer.createAnswer(questionID, body, name, email, photos)
     .then((result) => {
       res.status(201).send('CREATED');
@@ -39,7 +39,7 @@ const postAnswer = (req, res) => {
 };
 
 const putHelpful = (req, res) => {
-  console.log('req.params in controller putHelpful: ', req.params);//{ answer_id: '1' }
+  //console.log('req.params in controller putHelpful: ', req.params);//{ answer_id: '1' }
   const answerID = req.params.answer_id;
   return answer.updateAnswerHelpful(answerID)
     .then(() => {
@@ -56,8 +56,8 @@ const putReport = (req, res) => {
   const answerID = req.params.answer_id;
   return answer.updateAnswerReport(answerID)
     .then(() => {
-      res.status(204);
-      res.send('UPDATED');//this is supposed to be NO CONTENT
+      res.sendStatus(204);
+      //res.send('UPDATED');//this is supposed to be NO CONTENT
     })
     .catch(err => {
       console.log('answer putReport controller failed to get res from model: ', err);
