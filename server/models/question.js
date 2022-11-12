@@ -1,4 +1,4 @@
-const pool = require('../db/connection.js');
+const pool = require('../db');
 
 
 const getQuestionsByProductID = (productID, count, page) => {
@@ -40,17 +40,36 @@ const getQuestionsByProductID = (productID, count, page) => {
   ) AS allQuestions`;
 
 
-  return pool.query(query)
-    .then(res=>{
-      //if i try to console log this, i ran into a DB err
-      // console.log('res.rows[0].json_build_object: ', res.rows[0].json_build_object);
-      return res.rows[0]['allquestions'];
-      // return res.rows[0].json_build_object;
+  return pool.connect()
+    .then(client => {
+      return client.query(query)
+        .then(res => {
+          //if i try to console log this, i ran into a DB err
+          // console.log('res.rows[0].json_build_object: ', res.rows[0].json_build_object);
+          client.release();
+          return res.rows[0]['allquestions'];
+          // return res.rows[0].json_build_object;
+        })
+        .catch(err => {
+          client.release();
+          console.log('getAllQuestions Model failed to get data from DB ', err);
+          throw err;
+        });
     })
-    .catch(err=>{
-      console.log('getAllQuestions Model failed to get data from DB ', err);
-      throw err;
+    .catch(err => {
+      console.log('pool connection err in questionsQuery', err);
     });
+  // query(query)
+  //   .then(res=>{
+  //     //if i try to console log this, i ran into a DB err
+  //     // console.log('res.rows[0].json_build_object: ', res.rows[0].json_build_object);
+  //     return res.rows[0]['allquestions'];
+  //     // return res.rows[0].json_build_object;
+  //   })
+  //   .catch(err=>{
+  //     console.log('getAllQuestions Model failed to get data from DB ', err);
+  //     throw err;
+  //   });
 };
 
 
@@ -61,39 +80,75 @@ const createQuestion = ({ product_id, body, name, email }) => {
   // console.log('name: ', name);
   // console.log('email: ', email);
   const date = Date.parse(new Date());
- // console.log('date after parsing', date);//1667654128000
+  // console.log('date after parsing', date);//1667654128000
   const query = 'INSERT INTO questions (product_id,body,date_written,asker_name,asker_email) VALUES ($1, $2, $3, $4, $5)';
-  return pool.query(query, [product_id, body, date, name, email])
-    .then((res) => {
-      return res;
+
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [product_id, body, date, name, email])
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          console.log('createQuestion Model failed to insert to DB ', err);
+          client.release();
+          throw err;
+        });
     })
     .catch(err => {
-      console.log('createQuestion Model failed to insert to DB ', err);
+      console.log('pool connection err in createQuestio:', err);
       throw err;
     });
+  // return pool.query(query, [product_id, body, date, name, email])
+  //   .then((res) => {
+  //     return res;
+  //   })
+  //   .catch(err => {
+  //     console.log('createQuestion Model failed to insert to DB ', err);
+  //     throw err;
+  //   });
 };
 
 const updateQuestionHelpful = (questionID) => {
- // console.log('questionID passed into updateQuestionHelpful: ', questionID);
+  // console.log('questionID passed into updateQuestionHelpful: ', questionID);
   const query = 'UPDATE public.questions SET helpful = helpful+1 WHERE id = $1'; //this works!!! Tested with PgAdmin
-  return pool.query(query, [Number(questionID)])
-    .then((res) => {
-      return res;
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [Number(questionID)])
+        .then((res) => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          // console.log('updateQuestionHelpful model failed to update DB', err);
+          client.release();
+          throw err;
+        });
     })
     .catch(err => {
-     // console.log('updateQuestionHelpful model failed to update DB', err);
+      console.log('pool connection err in updateQuestionHelpful: ', err);
       throw err;
     });
 };
 
 const updateQuestionReport = (questionID) => {
   const query = 'UPDATE public.questions SET reported = true WHERE id = $1';
-  return pool.query(query, [Number(questionID)])
-    .then((res)=>{
-      return res;
+
+  return pool.connect()
+    .then(client => {
+      return client.query(query, [Number(questionID)])
+        .then(res => {
+          client.release();
+          return res;
+        })
+        .catch(err => {
+          // console.log('updateQuestionReport model failed to update DB', err);
+          client.release();
+          throw err;
+        });
     })
     .catch(err=>{
-     // console.log('updateQuestionReport model failed to update DB', err);
       throw err;
     });
 };
