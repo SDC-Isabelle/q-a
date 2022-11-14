@@ -2,14 +2,11 @@
 const { question } = require('../models/');
 
 const getQuestions = (req, res) => {
-  // console.log('req.params inside getQuestions controller', req.params);//{}
-  //console.log('req.query inside getQuestions controller', req.query);// { product_id: '1' }
-  const productID = req.query.product_id;
-  //console.log('productID inside getQuestionsController', productID);
+  const productID = req.query.product_id; //req.query={ product_id: '1' }
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  // console.log('count:', count);
-  // console.log('page:', page);
+  console.log('count:', count);
+  console.log('page:', page);
   return question.getQuestionsByProductID(productID, count, page)
     .then((data)=>{
       res.send(data);
@@ -21,17 +18,6 @@ const getQuestions = (req, res) => {
 };
 
 const postQuestion = (req, res) => {
-  //console.log('req.body inside postQuestion controller', req.body);
-  //req.body
-  //   {
-  //   body: 'will this make it to the api?',
-  //   name: 'girl',
-  //   email: 'girl@gmail.com',
-  //   product_id: 1
-  // }
-  //it takes some time to get to DB
-  // question.createQuestion(req.body);
-  // res.send('CREATED');
   return question.createQuestion(req.body)
     .then(() => {
       res.status(201);
@@ -46,12 +32,9 @@ const postQuestion = (req, res) => {
 //'/:question_id/helpful'
 //ex: localhost:3000/qa/questions/1/helpful
 const putHelpful = (req, res) => {
-  //console.log('req.params in controller putHelpful: ', req.params);//{ question_id: '1' }
-  // res.send('RECEIVED');
-  const questionID = req.params.question_id;
+  const questionID = req.params.question_id; //req.params = { question_id: '1' }
   return question.updateQuestionHelpful(questionID)
     .then(() => {
-     // console.log('db successfully updated');
       res.sendStatus(204);
       //this is supposed to be NO CONTENT
     })

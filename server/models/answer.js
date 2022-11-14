@@ -1,5 +1,4 @@
 const pool = require('../db');
-
 const getAnswersByQuestionID = (questionID, page, count) => {
   // const query = 'SELECT * FROM questions WHERE product_id = $1';
   // const query = `SELECT (json_build_object(
@@ -12,8 +11,6 @@ const getAnswersByQuestionID = (questionID, page, count) => {
   //the date format is wrong
   const currCount = count || 5;
   const currPage = page || 1;
-  // console.log('currCount:', currCount);
-  // console.log('currPage:', currPage);
   const query = `SELECT(
     json_build_object
     (
@@ -65,20 +62,42 @@ const getAnswersByQuestionID = (questionID, page, count) => {
     });
 };
 
+const addPhotos = (answerID, photos) => {
+  if (photos.length > 0) {
+    photos.forEach(photo => {
+      console.log('each photo in forEach:', photo);
+      const photoQuery = 'INSERT INTO photos(answer_id, url) VALUES ($1, $2)';
+      return pool.connect()
+        .then(client=>{
+          return client.query(photoQuery, [answerID, photo])
+            .then((res)=>{
+              client.release();
+              return res;
+            })
+            .catch(err=>{
+              console.log('err querying photos table:', err);
+              throw err;
+            });
+        })
+        .catch(err=>{
+          throw err;
+        });
+    });
+  }
+};
+
 //this post answer does not work! also needs to update photo table
 const createAnswer = (questionID, body, name, email, photos) => {
+  console.log('photos array passed in createAnswer', photos);
   const date = Date.parse(new Date());
   // console.log('date after parsing', date);//1667654128000
-  // console.log('body', body);
-  // console.log('name', name);
-  // console.log('email', email);
-  const query = 'INSERT INTO answers (question_id,body,date_written,answerer_name,answerer_email) VALUES ($1, $2, $3, $4, $5)';
+  const answerQuery = 'INSERT INTO answers (question_id,body,date_written,answerer_name,answerer_email) VALUES ($1, $2, $3, $4, $5) RETURNING id';
   return pool.connect()
     .then(client => {
-      return client.query(query, [questionID, body, date, name, email])
-        .then((res) => {
-          client.release();
-          return res;
+      return client.query(answerQuery, [questionID, body, date, name, email])
+        .then((data) => {
+          console.log('Number(data.rows[0].id', Number(data.rows[0].id));
+          return addPhotos(Number(data.rows[0].id), photos);
         })
         .catch(err => {
           console.log('createAnswer Model failed to insert to DB ', err);
@@ -126,7 +145,7 @@ const updateAnswerReport = (answerID) => {
           throw err;
         });
     })
-    .catch(e=>{
+    .catch(e => {
       throw e;
     });
 };
