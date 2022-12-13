@@ -51,10 +51,15 @@ GET questions request, randomized product_id (900K-1M) latency 85ms, 14982/15= 1
 
 ## Project Phases
 Phase 0: Pick service and initial setup
+<br></br>
 Phase 1: Create database - perform ELT process and migrate data via Postgres GUI
+<br></br>
 Phase 2: Create the API - define routes, integrate server and databases
+<br></br>
 Phase 3: Performance tune the service - stress-test service in development locally with K6
+<br></br>
 Phase 4: Deploy and benchmark initial performance - deploy services to raw EC2 instances 
+<br></br>
 Phase 5: Scale the application - stress-test cloud instances with loader.io, optimize the system and repeat!
 
 
