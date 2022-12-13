@@ -23,21 +23,21 @@ This project is worked with a team of 3 engineers in agile environment. This rep
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 20 35 PM" src="https://user-images.githubusercontent.com/81834520/207194850-89a07239-2084-4f3d-959f-1bde4d9419fa.png">
 
-<img width="528" alt="Screen Shot 2022-12-12 at 7 21 09 PM" src="https://user-images.githubusercontent.com/81834520/207195081-f864aba1-2e46-4c69-95d0-7bc972bae8c4.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 21 09 PM" src="https://user-images.githubusercontent.com/81834520/207195081-f864aba1-2e46-4c69-95d0-7bc972bae8c4.png">
 
 
-<img width="581" alt="Screen Shot 2022-12-12 at 7 23 10 PM" src="https://user-images.githubusercontent.com/81834520/207196023-2dc73da8-8a8b-4c46-83ff-97e2d70c643c.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 23 10 PM" src="https://user-images.githubusercontent.com/81834520/207196023-2dc73da8-8a8b-4c46-83ff-97e2d70c643c.png">
 
-<img width="593" alt="Screen Shot 2022-12-12 at 7 23 27 PM" src="https://user-images.githubusercontent.com/81834520/207196148-db742d8c-6ee9-4f4a-aff7-b7d7c6342889.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 23 27 PM" src="https://user-images.githubusercontent.com/81834520/207196148-db742d8c-6ee9-4f4a-aff7-b7d7c6342889.png">
 
-<img width="564" alt="Screen Shot 2022-12-12 at 7 23 42 PM" src="https://user-images.githubusercontent.com/81834520/207196233-4c00b488-f71b-4272-927e-3cf12e8c1057.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 23 42 PM" src="https://user-images.githubusercontent.com/81834520/207196233-4c00b488-f71b-4272-927e-3cf12e8c1057.png">
 
-<img width="573" alt="Screen Shot 2022-12-12 at 7 23 57 PM" src="https://user-images.githubusercontent.com/81834520/207196296-e12636cf-0ca0-4481-8c2e-04a8495e0b79.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 23 57 PM" src="https://user-images.githubusercontent.com/81834520/207196296-e12636cf-0ca0-4481-8c2e-04a8495e0b79.png">
 
 
-<img width="566" alt="Screen Shot 2022-12-12 at 7 24 13 PM" src="https://user-images.githubusercontent.com/81834520/207196341-11155863-81c4-4bfa-9d63-35353ee0d5c8.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 24 13 PM" src="https://user-images.githubusercontent.com/81834520/207196341-11155863-81c4-4bfa-9d63-35353ee0d5c8.png">
 
-<img width="549" alt="Screen Shot 2022-12-12 at 7 24 30 PM" src="https://user-images.githubusercontent.com/81834520/207196384-5c0d86d1-988a-4cfe-a7a1-8037926bcef9.png">
+<img width="531" alt="Screen Shot 2022-12-12 at 7 24 30 PM" src="https://user-images.githubusercontent.com/81834520/207196384-5c0d86d1-988a-4cfe-a7a1-8037926bcef9.png">
 
 
 
@@ -57,7 +57,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
-### Installing Dependencies<img width="700" alt="Screen Shot 2022-12-12 at 7 06 32 PM" src="https://user-images.githubusercontent.com/81834520/207188700-914cf38a-1e10-4b8a-945c-467b601109d2.png">
+### Installing Dependencies
 
 
 From within the root directory:
