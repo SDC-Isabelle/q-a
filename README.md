@@ -21,6 +21,17 @@ This project is worked with a team of 3 engineers in agile environment. This rep
 <img width="531" alt="Screen Shot 2022-12-12 at 7 17 40 PM" src="https://user-images.githubusercontent.com/81834520/207193783-f0fe7fa9-f002-44d8-bbfa-c80c7dc926b7.png">
 
 
+<img width="531" alt="Screen Shot 2022-12-12 at 7 20 35 PM" src="https://user-images.githubusercontent.com/81834520/207194850-89a07239-2084-4f3d-959f-1bde4d9419fa.png">
+
+<img width="528" alt="Screen Shot 2022-12-12 at 7 21 09 PM" src="https://user-images.githubusercontent.com/81834520/207195081-f864aba1-2e46-4c69-95d0-7bc972bae8c4.png">
+
+
+
+
+
+
+
+
 ## Usage
 
 > Some usage instructions
