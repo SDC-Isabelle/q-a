@@ -15,7 +15,8 @@ Atelier has multiple widgets
 This project is worked with a team of 3 engineers in agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
 
 
-<img width="803" alt="Screen Shot 2022-12-12 at 7 16 29 PM" src="https://user-images.githubusercontent.com/81834520/207193296-3103783a-ef38-4244-b104-c48d249f6466.png">
+
+<img width="531" alt="Screen Shot 2022-12-12 at 7 16 29 PM" src="https://user-images.githubusercontent.com/81834520/207193296-3103783a-ef38-4244-b104-c48d249f6466.png">
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 17 40 PM" src="https://user-images.githubusercontent.com/81834520/207193783-f0fe7fa9-f002-44d8-bbfa-c80c7dc926b7.png">
 
