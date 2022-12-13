@@ -16,7 +16,7 @@ It consists of multiple widgets
 Support the existing retail web application with a modernized system able to withstand web scale traffic loads. 
 
 ## Project Details
-This project is worked with a team of 3 engineers in agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
+This project is worked with a team of 3 engineers in an agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
 
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 16 29 PM" src="https://user-images.githubusercontent.com/81834520/207193296-3103783a-ef38-4244-b104-c48d249f6466.png">
