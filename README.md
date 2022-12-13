@@ -45,7 +45,9 @@ This project is worked with a team of 3 engineers in an agile environment. This 
 ## Project Stress-Testing Loade.io Result
 
 GET http://34.205.130.117/qa/questions?product_id=%{*:900000-1000000}
-GET questions request, randomized product_id (900K-1M), biased dataset selection to last 10% of dataset. Low latency 85ms, 14982/15= 1000rps throughput with 0.1 low error rate
+GET questions request, randomized product_id (900K-1M)
+Biased dataset selection to last 10% of dataset. 
+Low latency 85ms, 14982 sucess responses/15 secs = 998.9rps throughput with 0.1 low error rate
 <img width="940" alt="Screen Shot 2022-12-12 at 8 05 19 PM" src="https://user-images.githubusercontent.com/81834520/207200960-c8eddd12-82ab-4050-b8e7-f56dba5e0069.png"> 
 
 
