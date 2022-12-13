@@ -1,19 +1,22 @@
 # Atelier System Design
 
-## Technologies used 
+## Technologies Used 
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
+## Project Purpose 
+The recent update of the Atelier front end retail web portal that my team and I created have driven an outstanding increase in traffic to our site. While our business has the stock to keep up with the demand, our existing backend system is unable to withstand the web traffic we are experiencing. It calls for a complete redesign of the current backend system that can withstand this traffic.
 
-## Project description
-
-Atelier API service is the backend of a legacy E-commerce application which has over 1 million products.
-Atelier has multiple widgets 
+* Atelier is a modern E-commerce application which has over 1 million products.
+It consists of multiple widgets 
 - products widget which displays product details
 - questions and answers widget which allows users to submit questions and answers related to the product 
 - ratings and reviews widget which allows users to rate and write reviews related to the product
 
-This project is worked with a team of 3 engineers in agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
+## Project Goal 
+Support the existing retail web application with a modernized system able to withstand web scale traffic loads. 
 
+## Project Details
+This project is worked with a team of 3 engineers in agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
 
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 16 29 PM" src="https://user-images.githubusercontent.com/81834520/207193296-3103783a-ef38-4244-b104-c48d249f6466.png">
@@ -39,31 +42,19 @@ This project is worked with a team of 3 engineers in agile environment. This rep
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 24 30 PM" src="https://user-images.githubusercontent.com/81834520/207196384-5c0d86d1-988a-4cfe-a7a1-8037926bcef9.png">
 
+## Project Stress-Testing Loade.io Result
+
+GET http://34.205.130.117/qa/questions?product_id=%{*:900000-1000000}
+GET questions request, randomized product_id (900K-1M) latency 85ms, 14982/15= 1000rps throughput with 0.1 error rate
+<img width="940" alt="Screen Shot 2022-12-12 at 8 05 19 PM" src="https://user-images.githubusercontent.com/81834520/207200960-c8eddd12-82ab-4050-b8e7-f56dba5e0069.png"> 
 
 
+## Project Phases
+Phase 0: Pick service and initial setup
+Phase 1: Create database - perform ELT process and migrate data via Postgres GUI
+Phase 2: Create the API - define routes, integrate server and databases
+Phase 3: Performance tune the service - stress-test service in development locally with K6
+Phase 4: Deploy and benchmark initial performance - deploy services to raw EC2 instances 
+Phase 5: Scale the application - stress-test cloud instances with loader.io, optimize the system and repeat!
 
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
 
