@@ -42,7 +42,7 @@ This project is worked with a team of 3 engineers in an agile environment. This 
 
 <img width="531" alt="Screen Shot 2022-12-12 at 7 24 30 PM" src="https://user-images.githubusercontent.com/81834520/207196384-5c0d86d1-988a-4cfe-a7a1-8037926bcef9.png">
 
-## Project Stress-Testing Loade.io Result
+## Project Stress-Testing Loader.io Result
 
 GET http://34.205.130.117/qa/questions?product_id=%{*:900000-1000000}
 <br></br>
