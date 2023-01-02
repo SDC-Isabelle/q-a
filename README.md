@@ -15,6 +15,20 @@ It consists of multiple widgets
 ## Project Goal 
 Support the existing retail web application with a modernized system able to withstand web scale traffic loads. 
 
+## Project Phases
+Phase 0: Pick service and initial setup
+<br></br>
+Phase 1: Create database - perform ELT process and migrate data via Postgres GUI
+<br></br>
+Phase 2: Create the API - define routes, integrate server and databases
+<br></br>
+Phase 3: Performance tune the service - stress-test service in development locally with K6
+<br></br>
+Phase 4: Deploy and benchmark initial performance - deploy services to raw EC2 instances 
+<br></br>
+Phase 5: Scale the application - stress-test cloud instances with loader.io, optimize the system and repeat!
+
+
 ## Project Details
 This project is worked with a team of 3 engineers in an agile environment. This repo is specifically for questions and answers API service. Q&A service consists of 7 RESTful routes as follows - 
 
@@ -55,17 +69,5 @@ Low latency 85ms, 14982 sucess responses/15 secs = 998.9rps throughput with 0.1 
 <img width="940" alt="Screen Shot 2022-12-12 at 8 05 19 PM" src="https://user-images.githubusercontent.com/81834520/207200960-c8eddd12-82ab-4050-b8e7-f56dba5e0069.png"> 
 
 
-## Project Phases
-Phase 0: Pick service and initial setup
-<br></br>
-Phase 1: Create database - perform ELT process and migrate data via Postgres GUI
-<br></br>
-Phase 2: Create the API - define routes, integrate server and databases
-<br></br>
-Phase 3: Performance tune the service - stress-test service in development locally with K6
-<br></br>
-Phase 4: Deploy and benchmark initial performance - deploy services to raw EC2 instances 
-<br></br>
-Phase 5: Scale the application - stress-test cloud instances with loader.io, optimize the system and repeat!
 
 
