@@ -6,11 +6,6 @@
 ## Project Purpose 
 The recent update of the <a href="https://github.com/Front-End-Retail/Atelier-Front-End/tree/Development">Atelier front end retail web portal</a> that my team and I created have driven an outstanding increase in traffic to our site. While our business has the stock to keep up with the demand, our existing backend system is unable to withstand the web traffic we are experiencing. It calls for a complete redesign of the current backend system that can withstand this traffic.
 
-Atelier is a modern E-commerce application which has over 1 million products.
-It consists of multiple widgets 
-- products widget which displays product details
-- questions and answers widget which allows users to submit questions and answers related to the product 
-- ratings and reviews widget which allows users to rate and write reviews related to the product
 
 ## Project Goal 
 Support the existing retail web application with a modernized system able to withstand web scale traffic loads. 
