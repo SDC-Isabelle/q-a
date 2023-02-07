@@ -1,14 +1,6 @@
 const pool = require('../db');
 const getAnswersByQuestionID = (questionID, page, count) => {
-  // const query = 'SELECT * FROM questions WHERE product_id = $1';
-  // const query = `SELECT (json_build_object(
-  //   'answer_id', id,
-  //   'body', body,
-  //   'date', TO_CHAR(TO_TIMESTAMP(date_written/1000), 'DD/MM/YYYY HH24:MI:SS'),
-  //   'answerer_name', answerer_name,
-  //   'helpfulness', helpful)
-  //   ) FROM answers WHERE answers.question_id=$1`;
-  //the date format is wrong
+  
   const currCount = count || 5;
   const currPage = page || 1;
   const query = `SELECT(
@@ -42,7 +34,6 @@ const getAnswersByQuestionID = (questionID, page, count) => {
   ) AS allAnswers
   FROM answers WHERE answers.question_id=${questionID}  limit ${currCount} offset(${currPage * currCount - currCount})`;
 
-  //limit ${currCount} offset(${(currPage - 1) * currCount})`;
 
   return pool.connect()
     .then(client => {
@@ -86,11 +77,11 @@ const addPhotos = (answerID, photos) => {
   }
 };
 
-//this post answer does not work! also needs to update photo table
+
 const createAnswer = (questionID, body, name, email, photos) => {
   console.log('photos array passed in createAnswer', photos);
   const date = Date.parse(new Date());
-  // console.log('date after parsing', date);//1667654128000
+  //('date after parsing', date): 1667654128000
   const answerQuery = 'INSERT INTO answers (question_id,body,date_written,answerer_name,answerer_email) VALUES ($1, $2, $3, $4, $5) RETURNING id';
   return pool.connect()
     .then(client => {
@@ -131,7 +122,7 @@ const updateAnswerHelpful = (answerID) => {
 };
 
 const updateAnswerReport = (answerID) => {
-  const query = 'UPDATE public.answers SET reported = 1 WHERE id = $1'; //this works!!! Tested with PgAdmin
+  const query = 'UPDATE public.answers SET reported = 1 WHERE id = $1'; 
   return pool.connect()
     .then(client => {
       return client.query(query, [Number(answerID)])
