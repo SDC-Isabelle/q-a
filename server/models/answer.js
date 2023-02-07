@@ -79,7 +79,7 @@ const addPhotos = (answerID, photos) => {
 
 
 const createAnswer = (questionID, body, name, email, photos) => {
-  console.log('photos array passed in createAnswer', photos);
+ 
   const date = Date.parse(new Date());
   //('date after parsing', date): 1667654128000
   const answerQuery = 'INSERT INTO answers (question_id,body,date_written,answerer_name,answerer_email) VALUES ($1, $2, $3, $4, $5) RETURNING id';
