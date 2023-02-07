@@ -1,4 +1,3 @@
-//controller uses its logic to figure out what to do with clients reqs.
 const { question } = require('../models/');
 
 const getQuestions = (req, res) => {
@@ -29,14 +28,13 @@ const postQuestion = (req, res) => {
     });
 };
 
-//'/:question_id/helpful'
+
 //ex: localhost:3000/qa/questions/1/helpful
 const putHelpful = (req, res) => {
   const questionID = req.params.question_id; //req.params = { question_id: '1' }
   return question.updateQuestionHelpful(questionID)
     .then(() => {
       res.sendStatus(204);
-      //this is supposed to be NO CONTENT
     })
     .catch(err => {
       console.log('question putHelpful controller failed to get res from model: ', err);
@@ -49,7 +47,7 @@ const putReport = (req, res) => {
   return question.updateQuestionReport(questionID)
     .then(() => {
       res.status(204);
-      res.send('UPDATED');//this is supposed to be NO CONTENT
+      res.send('UPDATED');
     })
     .catch(err => {
       console.log('question putReport controller failed to get res from model: ', err);
