@@ -4,8 +4,7 @@ const getQuestions = (req, res) => {
   const productID = req.query.product_id; //req.query={ product_id: '1' }
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  console.log('count:', count);
-  console.log('page:', page);
+
   return question.getQuestionsByProductID(productID, count, page)
     .then((data)=>{
       res.send(data);
