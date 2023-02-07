@@ -2,7 +2,7 @@ const pool = require('../db');
 
 
 const getQuestionsByProductID = (productID, count, page) => {
-  // const query = 'SELECT * FROM questions WHERE product_id = $1';c
+ 
   const query = `SELECT json_build_object
   (
       'product_id', ${productID}::VARCHAR(255),
@@ -44,11 +44,9 @@ const getQuestionsByProductID = (productID, count, page) => {
     .then(client => {
       return client.query(query)
         .then(res => {
-          //if i try to console log this, i ran into a DB err
-          // console.log('res.rows[0].json_build_object: ', res.rows[0].json_build_object);
           client.release();
           return res.rows[0]['allquestions'];
-          // return res.rows[0].json_build_object;
+          // return res.rows[0].json_build_object; this returns an err
         })
         .catch(err => {
           client.release();
@@ -59,28 +57,13 @@ const getQuestionsByProductID = (productID, count, page) => {
     .catch(err => {
       console.log('pool connection err in questionsQuery', err);
     });
-  // query(query)
-  //   .then(res=>{
-  //     //if i try to console log this, i ran into a DB err
-  //     // console.log('res.rows[0].json_build_object: ', res.rows[0].json_build_object);
-  //     return res.rows[0]['allquestions'];
-  //     // return res.rows[0].json_build_object;
-  //   })
-  //   .catch(err=>{
-  //     console.log('getAllQuestions Model failed to get data from DB ', err);
-  //     throw err;
-  //   });
 };
 
 
 const createQuestion = ({ product_id, body, name, email }) => {
-  // console.log('it did get into model>createQuestion');
-  // console.log('product_id: ', product_id);
-  // console.log('body: ', body);
-  // console.log('name: ', name);
-  // console.log('email: ', email);
+  
   const date = Date.parse(new Date());
-  // console.log('date after parsing', date);//1667654128000
+  //('date after parsing', date)//1667654128000
   const query = 'INSERT INTO questions (product_id,body,date_written,asker_name,asker_email) VALUES ($1, $2, $3, $4, $5)';
 
   return pool.connect()
@@ -100,19 +83,11 @@ const createQuestion = ({ product_id, body, name, email }) => {
       console.log('pool connection err in createQuestio:', err);
       throw err;
     });
-  // return pool.query(query, [product_id, body, date, name, email])
-  //   .then((res) => {
-  //     return res;
-  //   })
-  //   .catch(err => {
-  //     console.log('createQuestion Model failed to insert to DB ', err);
-  //     throw err;
-  //   });
 };
 
 const updateQuestionHelpful = (questionID) => {
-  // console.log('questionID passed into updateQuestionHelpful: ', questionID);
-  const query = 'UPDATE public.questions SET helpful = helpful+1 WHERE id = $1'; //this works!!! Tested with PgAdmin
+  
+  const query = 'UPDATE public.questions SET helpful = helpful+1 WHERE id = $1'; 
   return pool.connect()
     .then(client => {
       return client.query(query, [Number(questionID)])
@@ -121,7 +96,6 @@ const updateQuestionHelpful = (questionID) => {
           return res;
         })
         .catch(err => {
-          // console.log('updateQuestionHelpful model failed to update DB', err);
           client.release();
           throw err;
         });
@@ -143,7 +117,6 @@ const updateQuestionReport = (questionID) => {
           return res;
         })
         .catch(err => {
-          // console.log('updateQuestionReport model failed to update DB', err);
           client.release();
           throw err;
         });
